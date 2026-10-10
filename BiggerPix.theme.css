@@ -1,6 +1,6 @@
 /**
  * @name Bigger Pix
- * @version 3.1
+ * @version 3.2
  * @author djxnzi
  * @description Accessibility theme to make avatars and emojis bigger, and adjust containers accordingly
 */
@@ -9,23 +9,27 @@
     --emoji-size: 2.25rem;
     --msg-avi-size: 72px;
     --side-avi-size: 48px;
+    --border-radius: 50%;
+    --spacing: 24px;
 }
 
 /* Message Box */
-[class*="message"] {
-    padding-right: 32px;
-}
 
 [class*="message"] [class*="avatar"] {
     width: var(--msg-avi-size);
     height: var(--msg-avi-size);
     background-size: cover;
-    border-radius: 50%;
+    border-radius: var(--border-radius);
+}
+
+[class*="message"] [class*="headerText"] {
+    position: relative;
+    left: 8px !important;
 }
 
 [class*="message"] [class*="repliedMessage"] {
     position: relative;
-    left: 30px;
+    left: var(--spacing);
 }
 
 [class*="message"] [class*="repliedTextPreview"] {
@@ -38,32 +42,34 @@
 [class*="message"] [class*="mentioned"] {
     background: none !important;
     position: relative;
+    min-height: 88px;
+    margin-top: 8px;
 }
 
 [class*="message"] [class*="mentioned"]::before {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: 0;
-    top: 20px;
+    top: 25px;
     z-index: -1;
-    height: 92px;
+    height: 67px;
+    background: rgba(255, 200, 255,0.2);
 }
 
 [class*="message"] [class*="mentioned"]::after {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: 0;
-    top: 20px;
-    background: rgba(255, 172, 28,0.1);
+    top: 24px;
+    background: rgba(172, 28, 255,0.1);
     border-radius: 0px 8px 8px 0px;
     z-index: -1;
-    min-height: 92px;
+    min-height: 62px;
 }
 
-[class*="message"] [class*="messageContent"],
-[class*="message"] [class*="container"] {
+[class*="message"] [class*="messageContent"] {
     position: relative;
-    left: 32px !important;
+    left: var(--spacing) !important;
 }
 
 [class*="message"] [class*="audioControls"] {
@@ -98,6 +104,19 @@
     height: 20px;
 }
 
+[class*="message"] [class*="visualMediaItemContainer"] {
+    padding-left: 2px;
+}
+
+.container_b7e1cb {
+    padding-left: calc(var(--spacing) + 6px);
+}
+
+[class*="message"] [class*="reactions"] {
+    position: relative;
+    left: -8px;
+}
+
 /* Scroller Spacer */
 [class*="scrollerSpacer"] {
     height: 24px;
@@ -130,3 +149,11 @@
     opacity: 0.75;
 }
 
+/* Fix volume */
+
+
+[class*="volumeButton"] {
+    position: absolute;
+    right: -42px;
+    bottom: -16px;
+}
